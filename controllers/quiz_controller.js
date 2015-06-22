@@ -19,7 +19,7 @@ exports.index = function(req, res) {
         //busqueda ="%" + req.query.search.toLowerCase().replace(/[\s]/ig,"%") + "%";
         busqueda ="%" + req.query.search.replace(/[\s]/ig,"%") + "%";
     }
-    models.Quiz.findAll({where: ["pregunta like ?", busqueda]}).then(function(quizes) {
+    models.Quiz.findAll({where: ["pregunta like ?", busqueda], order: 'pregunta ASC'}).then(function(quizes) {
     res.render('quizes/index.ejs', { quizes: quizes.sort()});
 }).catch(function(error) { next(error);});
 };
