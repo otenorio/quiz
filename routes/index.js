@@ -21,5 +21,6 @@ router.get('/quizes/:quizId(\\d+)/edit', quizController.edit);
 router.get('/author', function(req, res) { res.render('author', {}); });
 router.get('/search', function(req, res) { res.render('search', {}); });
 router.put('/quizes/:quizId(\\d+)', quizController.update);
+router.delete('/quizes/:quizId(\\d+)', quizController.destroy);
 
 module.exports = router;
