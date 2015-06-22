@@ -48,3 +48,8 @@ footer span {
 table {
     margin: auto;
 }
+
+#ErrorMsgs {
+  color: #f61;
+  font-size: smaler;
+}
