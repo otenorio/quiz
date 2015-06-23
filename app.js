@@ -24,14 +24,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser('Quiz 2015'));
-app.use(session({ secret: 'keyboard', key: 'sid', cookie: { secure: true }}));
+app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Helpers dinámicos:
 app.use(function(req, res, next) {
 
-    // guardar path en session.redir para después de login    
+    // guardar path en session.redir para después de login
     if (!req.path.match(/\/login|\/logout/)) {
         req.session.redir = req.path;
     }
