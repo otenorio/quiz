@@ -53,3 +53,7 @@ table {
   color: #f61;
   font-size: smaler;
 }
+
+.right {
+    float: right;
+}
