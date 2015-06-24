@@ -41,6 +41,26 @@ app.use(function(req, res, next) {
     next();
 });
 
+// Registro de la hora de la transacción
+app.use(function(req, res, next) {
+
+    var ahora = new Date().getTime();
+    var tiempoLimiteEnMs = 120000;
+    if (req.session.ultimaTransaccion && req.session.user) {
+        if ((ahora-req.session.ultimaTransaccion)>tiempoLimiteEnMs) {
+            delete req.session.user;
+            res.redirect("/login");
+        }
+    }
+
+    req.session.ultimaTransaccion = ahora;
+
+    //Hacer visible req.session en las vistas
+    res.locals.session = req.session;
+    next();
+});
+
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
