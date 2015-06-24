@@ -5,6 +5,7 @@ var quizController = require('../controllers/quiz_controller');
 var commentController = require('../controllers/comment_controller');
 var sessionController = require('../controllers/session_controller');
 var personalController = require('../controllers/personal_controller');
+var statisticsController = require('../controllers/statistics_controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -31,6 +32,7 @@ router.get('/author', personalController.author);
 router.get('/search', personalController.search);
 router.put('/quizes/:quizId(\\d+)',  sessionController.loginRequired, quizController.update);
 router.delete('/quizes/:quizId(\\d+)',  sessionController.loginRequired, quizController.destroy);
+router.get('/statistics', statisticsController.show);
 
 // Definición de rutas de comentarios
 router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);
